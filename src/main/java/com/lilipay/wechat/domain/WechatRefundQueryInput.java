@@ -1,11 +1,9 @@
-package com.lilipay.alipay.domain;
+package com.lilipay.wechat.domain;
 
-import com.lilipay.common.BaseDomain;
-
-public class AlipayTradeQueryRequest  {
+public class WechatRefundQueryInput {
 
     /**
-     * 请求流水号
+     * 退款流水号
      */
     private String requestNo;
 

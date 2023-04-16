@@ -26,9 +26,10 @@ public interface AlipayService {
 
     /**
      * 订单同步
+     *
      * @return 订单信息
      */
-    Response<AlipayAppPayTradeResult> tradeSync(AlipayTradeSyncRequest tradeSyncRequest);
+    Response<AlipayAppPayTradeResult> tradeSync( AlipayTradeSyncRequest tradeSyncRequest );
 
     /**
      * 尝试关闭订单 <br/>

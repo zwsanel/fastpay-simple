@@ -1,4 +1,4 @@
-package com.lilipay.alipay.service.domain;
+package com.lilipay.alipay.gateway.domain;
 
 public class AlipayTradeCloseGatewayResult {
 

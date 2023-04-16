@@ -1,6 +1,6 @@
-package com.lilipay.alipay.service;
+package com.lilipay.alipay.gateway;
 
-import com.lilipay.alipay.service.domain.*;
+import com.lilipay.alipay.gateway.domain.*;
 import com.lilipay.common.Response;
 
 public interface AlipayGatewayService {

@@ -1,23 +1,21 @@
-package com.lilipay.alipay.domain;
+package com.lilipay.wechat.domain;
 
-import com.lilipay.common.BaseDomain;
-
-public class AlipayAppPayTradeResult  {
+public class WechatPrepayQueryOutput {
 
     /**
-     * 商户流水号
+     * 请求流水号
      */
     private String requestNo;
 
     /**
-     * 支付状态
+     * 订单状态
      */
     private String status;
 
     /**
-     * 支付宝订单号
+     * 调起支付请求参数
      */
-    private String tradeNo;
+    private WeixinPayRequest weixinPayRequest;
 
     public String getRequestNo() {
         return requestNo;
@@ -35,11 +33,11 @@ public class AlipayAppPayTradeResult  {
         this.status = status;
     }
 
-    public String getTradeNo() {
-        return tradeNo;
+    public WeixinPayRequest getWeixinPayRequest() {
+        return weixinPayRequest;
     }
 
-    public void setTradeNo( String tradeNo ) {
-        this.tradeNo = tradeNo;
+    public void setWeixinPayRequest( WeixinPayRequest weixinPayRequest ) {
+        this.weixinPayRequest = weixinPayRequest;
     }
 }

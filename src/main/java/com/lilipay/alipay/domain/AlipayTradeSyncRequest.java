@@ -2,7 +2,7 @@ package com.lilipay.alipay.domain;
 
 import com.lilipay.common.BaseDomain;
 
-public class AlipayTradeSyncRequest extends BaseDomain {
+public class AlipayTradeSyncRequest  {
 
     private String requestNo;
 

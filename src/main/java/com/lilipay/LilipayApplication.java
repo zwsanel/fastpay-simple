@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class LilipayApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LilipayApplication.class, args);
-	}
+    public static void main( String[] args ) {
+        SpringApplication.run( LilipayApplication.class, args );
+    }
 
 }

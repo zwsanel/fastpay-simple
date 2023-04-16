@@ -4,7 +4,7 @@ import com.lilipay.common.BaseDomain;
 
 import java.math.BigDecimal;
 
-public class AlipayAppPayRequest extends BaseDomain {
+public class AlipayAppPayRequest  {
 
     /**
      * 请求流水号

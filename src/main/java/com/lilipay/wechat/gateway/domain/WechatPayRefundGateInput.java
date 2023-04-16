@@ -1,0 +1,170 @@
+package com.lilipay.wechat.gateway.domain;
+
+public class WechatPayRefundGateInput {
+
+    /**
+     * 公众账号ID
+     */
+    private String appId;
+
+    private String weixinHost;
+
+    /**
+     * 商户号
+     */
+    private String mchId;
+
+    /**
+     * apiKey
+     */
+    private String apiKey;
+
+    /**
+     * 微信订单号
+     */
+    private String transactionId;
+
+    /**
+     * 商户订单号
+     */
+    private String outTradeNo;
+
+    /**
+     * 商户退款单号
+     */
+    private String outRefundNo;
+
+    /**
+     * 订单金额
+     */
+    private Integer totalFee;
+
+    /**
+     * 退款金额
+     */
+    private Integer refundFee;
+
+    /**
+     * 退款货币种类
+     */
+    private String refundFeeType;
+
+    /**
+     * 退款原因
+     */
+    private String refundDesc;
+
+    /**
+     * 退款资金来源
+     */
+    private String refundAccount;
+
+    /**
+     * 退款结果通知url
+     */
+    private String notifyUrl;
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId( String appId ) {
+        this.appId = appId;
+    }
+
+    public String getMchId() {
+        return mchId;
+    }
+
+    public void setMchId( String mchId ) {
+        this.mchId = mchId;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey( String apiKey ) {
+        this.apiKey = apiKey;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId( String transactionId ) {
+        this.transactionId = transactionId;
+    }
+
+    public String getOutTradeNo() {
+        return outTradeNo;
+    }
+
+    public void setOutTradeNo( String outTradeNo ) {
+        this.outTradeNo = outTradeNo;
+    }
+
+    public String getOutRefundNo() {
+        return outRefundNo;
+    }
+
+    public void setOutRefundNo( String outRefundNo ) {
+        this.outRefundNo = outRefundNo;
+    }
+
+    public Integer getTotalFee() {
+        return totalFee;
+    }
+
+    public void setTotalFee( Integer totalFee ) {
+        this.totalFee = totalFee;
+    }
+
+    public Integer getRefundFee() {
+        return refundFee;
+    }
+
+    public void setRefundFee( Integer refundFee ) {
+        this.refundFee = refundFee;
+    }
+
+    public String getRefundFeeType() {
+        return refundFeeType;
+    }
+
+    public void setRefundFeeType( String refundFeeType ) {
+        this.refundFeeType = refundFeeType;
+    }
+
+    public String getRefundDesc() {
+        return refundDesc;
+    }
+
+    public void setRefundDesc( String refundDesc ) {
+        this.refundDesc = refundDesc;
+    }
+
+    public String getRefundAccount() {
+        return refundAccount;
+    }
+
+    public void setRefundAccount( String refundAccount ) {
+        this.refundAccount = refundAccount;
+    }
+
+    public String getNotifyUrl() {
+        return notifyUrl;
+    }
+
+    public void setNotifyUrl( String notifyUrl ) {
+        this.notifyUrl = notifyUrl;
+    }
+
+    public String getWeixinHost() {
+        return weixinHost;
+    }
+
+    public void setWeixinHost( String weixinHost ) {
+        this.weixinHost = weixinHost;
+    }
+}

@@ -2,7 +2,7 @@ package com.lilipay.alipay.domain;
 
 import com.lilipay.common.BaseDomain;
 
-public class AlipayOrderCloseRequest extends BaseDomain {
+public class AlipayOrderCloseRequest  {
 
     /**
      * 请求流水号

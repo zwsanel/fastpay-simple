@@ -12,14 +12,14 @@ public class ResponseUtils {
         return response;
     }
 
-    public static <T> Response<T> success(T data) {
+    public static <T> Response<T> success( T data ) {
         Response<T> response = new Response<>();
         response.setSuccess( true );
         response.setData( data );
         return response;
     }
 
-    public static <T> Response<T> fail(String errorCode, String errorMsg) {
+    public static <T> Response<T> fail( String errorCode, String errorMsg ) {
         Response<T> response = new Response<>();
         response.setSuccess( false );
         response.setErrorCode( errorCode );

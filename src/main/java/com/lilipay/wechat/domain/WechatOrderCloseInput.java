@@ -1,12 +1,12 @@
-package com.lilipay.alipay.domain;
+package com.lilipay.wechat.domain;
 
-import com.lilipay.common.BaseDomain;
+public class WechatOrderCloseInput {
 
-public class AlipayTradeQueryRequest  {
 
     /**
-     * 请求流水号
+     * 商户流水号
      */
+    
     private String requestNo;
 
     public String getRequestNo() {
