@@ -30,14 +30,6 @@ public interface WechatService {
     Response<WechatOrderCloseOutput> orderClose( WechatOrderCloseInput wechatOrderCloseInput );
 
     /**
-     * 预付单查询
-     *
-     * @param wechatPrepayQueryInput 预付单查询请求
-     * @return 预付单信息
-     */
-    Response<WechatPrepayQueryOutput> prepayQuery( WechatPrepayQueryInput wechatPrepayQueryInput );
-
-    /**
      * 申请退款
      *
      * @param wechatRefundInput 退款请求
@@ -52,27 +44,4 @@ public interface WechatService {
      * @return 退款结果
      */
     Response<WechatRefundOutput> refundQuery( WechatRefundQueryInput wechatRefundQueryInput );
-
-    /**
-     * 企业付款
-     *
-     * @param wechatTransferInput 企业付款请求
-     */
-    Response<WechatTransferOutput> transfer( WechatTransferInput wechatTransferInput );
-
-    /**
-     * 企业付款查询
-     *
-     * @param wechatTransferQueryInput 企业付款查询请求
-     * @return 查询结果
-     */
-    Response<WechatTransferOutput> transferQuery( WechatTransferQueryInput wechatTransferQueryInput );
-
-    /**
-     * 微信交易查询
-     *
-     * @param wechatTradeQueryInput 微信交易单号或商户订单号
-     * @return 查询结果
-     */
-    Response<WechatTradeQueryOutput> tradeQuery( WechatTradeQueryInput wechatTradeQueryInput );
 }

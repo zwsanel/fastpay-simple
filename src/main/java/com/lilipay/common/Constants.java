@@ -15,4 +15,10 @@ public interface Constants {
     String WECHAT_FAIL = "FAIL";
 
     String WECHAT_DATE_PATTERN = "yyyyMMddHHmmss";
+
+    String WECHAT_REFUND_REFUNDING = "REFUNDING";
+
+    String WECHAT_REFUND_FAIL = "FAIL";
+
+    String WECHAT_REFUND_SUCCESS = "SUCCESS";
 }

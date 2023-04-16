@@ -5,16 +5,16 @@ import java.math.BigDecimal;
 public class WechatRefundInput {
 
     /**
-     * 退款流水号
+     * 退款流水
      */
 
     private String requestNo;
 
     /**
-     * 微信统一下单流水号
+     * 下单流水
      */
 
-    private String unifiedOrderRequestNo;
+    private String targetRequestNo;
 
     /**
      * 退款金额
@@ -22,14 +22,9 @@ public class WechatRefundInput {
     private BigDecimal amount;
 
     /**
-     * 备注
+     * 退款备注
      */
-    private String remark;
-
-    /**
-     * 通知URL
-     */
-    private String notifyUrl;
+    private String refundDesc;
 
     public String getRequestNo() {
         return requestNo;
@@ -39,12 +34,12 @@ public class WechatRefundInput {
         this.requestNo = requestNo;
     }
 
-    public String getUnifiedOrderRequestNo() {
-        return unifiedOrderRequestNo;
+    public String getTargetRequestNo() {
+        return targetRequestNo;
     }
 
-    public void setUnifiedOrderRequestNo( String unifiedOrderRequestNo ) {
-        this.unifiedOrderRequestNo = unifiedOrderRequestNo;
+    public void setTargetRequestNo( String targetRequestNo ) {
+        this.targetRequestNo = targetRequestNo;
     }
 
     public BigDecimal getAmount() {
@@ -55,19 +50,11 @@ public class WechatRefundInput {
         this.amount = amount;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getRefundDesc() {
+        return refundDesc;
     }
 
-    public void setRemark( String remark ) {
-        this.remark = remark;
-    }
-
-    public String getNotifyUrl() {
-        return notifyUrl;
-    }
-
-    public void setNotifyUrl( String notifyUrl ) {
-        this.notifyUrl = notifyUrl;
+    public void setRefundDesc( String refundDesc ) {
+        this.refundDesc = refundDesc;
     }
 }

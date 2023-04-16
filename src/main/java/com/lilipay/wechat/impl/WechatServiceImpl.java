@@ -7,11 +7,11 @@ import com.lilipay.common.ResponseUtils;
 import com.lilipay.wechat.WechatService;
 import com.lilipay.wechat.domain.*;
 import com.lilipay.wechat.entity.WechatEntity;
+import com.lilipay.wechat.entity.WechatRefundEntity;
 import com.lilipay.wechat.gateway.WechatGateService;
-import com.lilipay.wechat.gateway.domain.WechatAppPayOutput;
-import com.lilipay.wechat.gateway.domain.WechatPayUnifiedOrderGateInput;
-import com.lilipay.wechat.gateway.domain.WechatPayUnifiedOrderGateOutput;
+import com.lilipay.wechat.gateway.domain.*;
 import com.lilipay.wechat.mapper.WechatEntityMapper;
+import com.lilipay.wechat.mapper.WechatRefundEntityMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.logging.log4j.LogManager;
@@ -31,6 +31,9 @@ public class WechatServiceImpl implements WechatService {
 
     @Resource
     private WechatEntityMapper wechatEntityMapper;
+
+    @Resource
+    private WechatRefundEntityMapper wechatRefundEntityMapper;
 
     @Resource
     private WechatGateService wechatGatewayService;
@@ -126,41 +129,131 @@ public class WechatServiceImpl implements WechatService {
 
     @Override
     public Response<WechatOrderQueryOutput> orderQuery( WechatOrderQueryInput wechatOrderQueryInput ) {
-        return null;
+
+        WechatEntity wechatEntity = wechatEntityMapper.selectByRequestNo( wechatOrderQueryInput.getRequestNo() );
+        if ( Objects.isNull( wechatEntity ) ) {
+            logger.error( "微信订单不存在" );
+            return ResponseUtils.fail( "error", "订单不存在" );
+        }
+
+        WechatOrderQueryOutput wechatOrderQueryOutput = new WechatOrderQueryOutput();
+        wechatOrderQueryOutput.setRequestNo( wechatEntity.getRequestNo() );
+        wechatOrderQueryOutput.setAppId( wechatEntity.getAppId() );
+        wechatOrderQueryOutput.setStatus( wechatEntity.getStatus() );
+        wechatOrderQueryOutput.setOrderNo( wechatEntity.getOrderNo() );
+        wechatOrderQueryOutput.setChannelOrderNo( wechatEntity.getOrderNo() );
+        wechatOrderQueryOutput.setReturnTime( wechatEntity.getReturnTime() );
+        wechatOrderQueryOutput.setPayTime( wechatEntity.getPayTime() );
+        wechatOrderQueryOutput.setErrCode( wechatEntity.getErrCode() );
+        wechatOrderQueryOutput.setErrCodeDesc( wechatEntity.getTradeDesc() );
+        return ResponseUtils.success( wechatOrderQueryOutput );
     }
 
     @Override
     public Response<WechatOrderCloseOutput> orderClose( WechatOrderCloseInput wechatOrderCloseInput ) {
-        return null;
-    }
 
-    @Override
-    public Response<WechatPrepayQueryOutput> prepayQuery( WechatPrepayQueryInput wechatPrepayQueryInput ) {
-        return null;
+        WechatEntity requestEntity = wechatEntityMapper.selectByRequestNo( wechatOrderCloseInput.getRequestNo() );
+        if ( Objects.equals( requestEntity.getStatus(), Constants.WECHAT_FAIL ) ) {
+            logger.info( "微信订单最终状态, 跳过处理, 流水号: {}", wechatOrderCloseInput.getRequestNo() );
+            return ResponseUtils.success();
+        }
+
+        if ( Objects.equals( requestEntity.getStatus(), Constants.WECHAT_SUCCESS ) ) {
+            logger.info( "微信订单已处于最终状态, 本次关闭订单请求跳过处理, 流水号: {}", wechatOrderCloseInput.getRequestNo() );
+            return ResponseUtils.fail( "error", "订单已支付" );
+        }
+
+        WechatCloseOrderGateInput closeOrderRequest = new WechatCloseOrderGateInput();
+        closeOrderRequest.setOrderNo( requestEntity.getOrderNo() );
+        Response<WechatCloseOrderGateOutput> closeOrderResponse = wechatGatewayService.closeOrder( closeOrderRequest );
+        if ( !closeOrderResponse.isSuccess() ) {
+            logger.error( "调用GWS关闭微信订单接口返回失败, 请求信息: {}, 返回信息: {}", closeOrderRequest, closeOrderResponse );
+            return ResponseUtils.fail( "error", "网关异常" );
+        }
+
+        WechatCloseOrderGateOutput closeOrderData = closeOrderResponse.getData();
+        if ( Objects.equals( closeOrderData.getReturnCode(), Constants.WECHAT_FAIL ) || Objects.equals( closeOrderData.getResultCode(), Constants.WECHAT_FAIL ) ) {
+            logger.error( "关闭微信订单失败, 微信返回信息: {}", closeOrderData );
+            return ResponseUtils.fail( "error", "订单关闭失败" );
+        }
+        return ResponseUtils.success();
     }
 
     @Override
     public Response<WechatRefundOutput> refund( WechatRefundInput wechatRefundInput ) {
-        return null;
+
+        WechatEntity wechatEntity = wechatEntityMapper.selectByRequestNo( wechatRefundInput.getTargetRequestNo() );
+        if ( wechatEntity == null ) {
+            return ResponseUtils.fail( "error", "原始订单不存在" );
+        }
+
+        if ( Objects.equals( wechatEntity.getStatus(), Constants.WECHAT_PAYING ) ) {
+            return ResponseUtils.fail( "error", "订单支付中，请稍后再试" );
+        }
+
+        if ( Objects.equals( wechatEntity.getStatus(), Constants.WECHAT_FAIL ) ) {
+            return ResponseUtils.fail( "error", "订单失败，请核对交易" );
+        }
+
+        if ( Objects.equals( wechatEntity.getStatus(), Constants.WECHAT_SUCCESS ) ) {
+
+            WechatRefundEntity refundEntity = new WechatRefundEntity();
+            refundEntity.setRequestNo( wechatRefundInput.getRequestNo() );
+            refundEntity.setProcessNo( UUID.randomUUID().toString().replace( "-", "" ) );
+            refundEntity.setTargetRequestNo( wechatRefundInput.getTargetRequestNo() );
+//            refundEntity.setWechatMemberNo();
+            refundEntity.setOutRefundNo( UUID.randomUUID().toString().replace( "-", "" ) );
+            refundEntity.setRefundFee( wechatRefundInput.getAmount() );
+            refundEntity.setRefundDesc( wechatRefundInput.getRefundDesc() );
+            refundEntity.setStatus( Constants.WECHAT_REFUND_REFUNDING );
+            wechatRefundEntityMapper.insertSelective( refundEntity );
+
+            WechatPayRefundGateInput refundGateInput = new WechatPayRefundGateInput();
+            refundGateInput.setTransactionId( wechatEntity.getTransactionId() );
+            refundGateInput.setOutTradeNo( wechatEntity.getOrderNo() );
+            refundGateInput.setOutRefundNo( refundEntity.getOutRefundNo() );
+            refundGateInput.setTotalFee( Integer.valueOf( wechatEntity.getAmount().movePointRight( 2 ).toString() ) );
+            refundGateInput.setRefundFee( Integer.valueOf( refundEntity.getRefundFee().movePointRight( 2 ).toString() ) );
+            refundGateInput.setRefundDesc( refundEntity.getRefundDesc() );
+            Response<WechatPayRefundGateOutput> refundResponse = wechatGatewayService.refund( refundGateInput );
+            if ( !refundResponse.isSuccess() ) {
+                logger.error( "调用退款网关失败: {}", refundResponse );
+                return ResponseUtils.fail( "error", "调用退款网关失败，请发起查询" );
+            }
+
+            WechatPayRefundGateOutput responseData = refundResponse.getData();
+            refundEntity.setReturnCode( responseData.getReturnCode() );
+            refundEntity.setReturnMsg( responseData.getReturnMsg() );
+            refundEntity.setResultCode( responseData.getResultCode() );
+            refundEntity.setErrCode( responseData.getErrCode() );
+            refundEntity.setErrCodeDes( responseData.getErrCodeDes() );
+            refundEntity.setRefundId( responseData.getRefundId() );
+            //  result_code FAIL 提交业务失败
+            if ( Objects.equals( responseData.getResultCode(), "FAIL" ) ) {
+                refundEntity.setStatus( Constants.WECHAT_REFUND_FAIL );
+            }
+            wechatRefundEntityMapper.updateByPrimaryKeySelective( refundEntity );
+            return ResponseUtils.success();
+        }
+
+        return ResponseUtils.fail( "error", "订单状态未知，请稍后再试" );
     }
 
     @Override
     public Response<WechatRefundOutput> refundQuery( WechatRefundQueryInput wechatRefundQueryInput ) {
-        return null;
-    }
+        WechatRefundEntity refundEntity = wechatRefundEntityMapper.selectByRequestNo( wechatRefundQueryInput.getRequestNo() );
+        if ( refundEntity == null ) {
+            return ResponseUtils.fail( "error", "原始订单不存在" );
+        }
 
-    @Override
-    public Response<WechatTransferOutput> transfer( WechatTransferInput wechatTransferInput ) {
-        return null;
-    }
-
-    @Override
-    public Response<WechatTransferOutput> transferQuery( WechatTransferQueryInput wechatTransferQueryInput ) {
-        return null;
-    }
-
-    @Override
-    public Response<WechatTradeQueryOutput> tradeQuery( WechatTradeQueryInput wechatTradeQueryInput ) {
-        return null;
+        WechatRefundOutput response = new WechatRefundOutput();
+        response.setRequestNo( refundEntity.getRequestNo() );
+        response.setStatus( refundEntity.getStatus() );
+        response.setSuccessTime( refundEntity.getDateUpdated() );
+        response.setRecvAccout( refundEntity.getRefundRecvAccout() );
+        response.setWechatRefundNo( refundEntity.getRefundId() );
+        response.setErrCode( StringUtils.defaultIfEmpty( refundEntity.getErrCode(), "" ) );
+        response.setErrCodeDesc( StringUtils.defaultIfEmpty( refundEntity.getErrCodeDes(), "" ) );
+        return ResponseUtils.success( response );
     }
 }

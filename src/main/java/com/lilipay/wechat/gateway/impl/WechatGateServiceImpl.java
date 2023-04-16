@@ -3,8 +3,6 @@ package com.lilipay.wechat.gateway.impl;
 import com.lilipay.common.Response;
 import com.lilipay.common.ResponseUtils;
 import com.lilipay.common.utils.JAXBUtils;
-import com.lilipay.wechat.builder.WechatTransfersQueryMapper;
-import com.lilipay.wechat.builder.WechatTransfersResponseMapper;
 import com.lilipay.wechat.gateway.WechatGateService;
 import com.lilipay.wechat.gateway.domain.*;
 import com.lilipay.wechat.gateway.message.*;
@@ -276,8 +274,8 @@ public class WechatGateServiceImpl implements WechatGateService {
     public Response<WechatPayRefundGateOutput> refund( WechatPayRefundGateInput wechatPayRefundGateInput ) {
 
         WechatPayRefundInputXml refundInputXml = new WechatPayRefundInputXml();
-        refundInputXml.setAppid( wechatPayRefundGateInput.getAppId() );
-        refundInputXml.setMch_id( wechatPayRefundGateInput.getMchId() );
+        refundInputXml.setAppid( appId );
+        refundInputXml.setMch_id( memberNo );
         refundInputXml.setNonce_str( SignUtils.getRandomLess32() );
         refundInputXml.setTransaction_id( wechatPayRefundGateInput.getTransactionId() );
         refundInputXml.setOut_trade_no( wechatPayRefundGateInput.getOutTradeNo() );
@@ -287,9 +285,8 @@ public class WechatGateServiceImpl implements WechatGateService {
         refundInputXml.setRefund_fee_type( wechatPayRefundGateInput.getRefundFeeType() );
         refundInputXml.setRefund_desc( wechatPayRefundGateInput.getRefundDesc() );
         refundInputXml.setRefund_account( wechatPayRefundGateInput.getRefundAccount() );
-        refundInputXml.setNotify_url( refundNotifyUrl );
-        if ( StringUtils.isNotEmpty( wechatPayRefundGateInput.getNotifyUrl() ) ) {
-            refundInputXml.setNotify_url( wechatPayRefundGateInput.getNotifyUrl() );
+        if ( StringUtils.isNotEmpty( refundNotifyUrl ) ) {
+            refundInputXml.setNotify_url( refundNotifyUrl );
         }
 
         String requestStr = JAXBUtils.toString( refundInputXml );
@@ -423,53 +420,5 @@ public class WechatGateServiceImpl implements WechatGateService {
             refundNoticeResponse.setRefundRequestSource( refundResultReqInfoXml.getRefund_request_source() );
         }
         return ResponseUtils.success( refundNoticeResponse );
-    }
-
-    @Override
-    public Response<WechatTransfersGateOutput> transfers( WechatTransfersGateInput wechatTransfersGateInput ) {
-
-        WechatTransfersInput input = new WechatTransfersInput();
-        input.setMch_appid( wechatTransfersGateInput.getAppId() );
-        input.setMchid( wechatTransfersGateInput.getMchid() );
-        input.setDevice_info( wechatTransfersGateInput.getDeviceInfo() );
-        input.setNonce_str( SignUtils.getRandomLess32() );
-        input.setPartner_trade_no( wechatTransfersGateInput.getOrderNo() );
-        input.setOpenid( wechatTransfersGateInput.getOpenId() );
-        input.setCheck_name( "NO_CHECK" );
-        if ( wechatTransfersGateInput.getCheckName() ) {
-            input.setCheck_name( "FORCE_CHECK" );
-        }
-        input.setRe_user_name( wechatTransfersGateInput.getUserName() );
-        input.setAmount( wechatTransfersGateInput.getAmount().movePointRight( 2 ).toString() );
-        input.setDesc( wechatTransfersGateInput.getDesc() );
-        input.setSpbill_create_ip( wechatTransfersGateInput.getIp() );
-        input.setSign( SignUtils.sign( JAXBUtils.toString( input ), wechatTransfersGateInput.getApiKey(), CHARSET ) );
-        String requestXml = JAXBUtils.toString( input );
-        HttpUtils.Result<String> postResult = HttpUtils.sendPostRequest( wxHost + "/mmpaymkttransfers/promotion/transfers", new StringEntity( requestXml, CHARSET ) );
-        if ( !postResult.isSuccess() ) {
-            return ResponseUtils.fail( "error", "网关请求失败" );
-        }
-        String outputXml = postResult.getData();
-        WechatTransfersOutput output = JAXBUtils.toObject( outputXml, WechatTransfersOutput.class );
-        WechatTransfersGateOutput response = WechatTransfersResponseMapper.mapper( output );
-        return ResponseUtils.success( response );
-    }
-
-    @Override
-    public Response<WechatTransfersQueryGateOutput> transfersQuery( WechatTransfersQueryGateInput wechatTransfersQueryGateInput ) {
-        WechatTransfersQueryInput input = new WechatTransfersQueryInput();
-        input.setNonce_str( SignUtils.getRandomLess32() );
-        input.setPartner_trade_no( wechatTransfersQueryGateInput.getOrderNo() );
-        input.setMch_id( wechatTransfersQueryGateInput.getMchid() );
-        input.setAppid( wechatTransfersQueryGateInput.getAppId() );
-        input.setSign( SignUtils.sign( JAXBUtils.toString( input ), wechatTransfersQueryGateInput.getApiKey(), CHARSET ) );
-        String requestXml = JAXBUtils.toString( input );
-        HttpUtils.Result<String> postResult = HttpUtils.sendPostRequest( wxHost + "/mmpaymkttransfers/gettransferinfo", new StringEntity( requestXml, CHARSET ) );
-        if ( !postResult.isSuccess() ) {
-            return ResponseUtils.fail( "error", "网关请求失败" );
-        }
-        String outputXml = postResult.getData();
-        WechatTransfersQueryOutput output = JAXBUtils.toObject( outputXml, WechatTransfersQueryOutput.class );
-        return ResponseUtils.success( WechatTransfersQueryMapper.mapper( output ) );
     }
 }

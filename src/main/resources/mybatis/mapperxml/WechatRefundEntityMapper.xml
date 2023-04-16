@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lilipay.wechat.mapper.WechatRefundEntityMapper">
+  <resultMap id="BaseResultMap" type="com.lilipay.wechat.entity.WechatRefundEntity">
+    <!--@mbg.generated-->
+    <!--@Table wechat_refund-->
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="request_no" jdbcType="VARCHAR" property="requestNo"/>
+    <result column="process_no" jdbcType="VARCHAR" property="processNo"/>
+    <result column="target_request_no" jdbcType="VARCHAR" property="targetRequestNo"/>
+    <result column="wechat_member_no" jdbcType="VARCHAR" property="wechatMemberNo"/>
+    <result column="out_refund_no" jdbcType="VARCHAR" property="outRefundNo"/>
+    <result column="refund_fee" jdbcType="DECIMAL" property="refundFee"/>
+    <result column="refund_desc" jdbcType="VARCHAR" property="refundDesc"/>
+    <result column="return_code" jdbcType="VARCHAR" property="returnCode"/>
+    <result column="return_msg" jdbcType="VARCHAR" property="returnMsg"/>
+    <result column="result_code" jdbcType="VARCHAR" property="resultCode"/>
+    <result column="err_code" jdbcType="VARCHAR" property="errCode"/>
+    <result column="err_code_des" jdbcType="VARCHAR" property="errCodeDes"/>
+    <result column="refund_id" jdbcType="VARCHAR" property="refundId"/>
+    <result column="refund_status" jdbcType="VARCHAR" property="refundStatus"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
+    <result column="refund_recv_accout" jdbcType="VARCHAR" property="refundRecvAccout"/>
+    <result column="date_created" jdbcType="TIMESTAMP" property="dateCreated"/>
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+    <result column="date_updated" jdbcType="TIMESTAMP" property="dateUpdated"/>
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, request_no, process_no, target_request_no, wechat_member_no, out_refund_no, refund_fee,
+    refund_desc, return_code, return_msg, result_code, err_code, err_code_des, refund_id,
+    refund_status, `status`, refund_recv_accout, date_created, created_by, date_updated,
+    updated_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List"/>
+    from wechat_refund
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from wechat_refund
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lilipay.wechat.entity.WechatRefundEntity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into wechat_refund (request_no, process_no, target_request_no,
+    wechat_member_no, out_refund_no, refund_fee,
+    refund_desc, return_code, return_msg,
+    result_code, err_code, err_code_des,
+    refund_id, refund_status, `status`,
+    refund_recv_accout, date_created, created_by,
+    date_updated, updated_by)
+    values (#{requestNo,jdbcType=VARCHAR}, #{processNo,jdbcType=VARCHAR}, #{targetRequestNo,jdbcType=VARCHAR},
+    #{wechatMemberNo,jdbcType=VARCHAR}, #{outRefundNo,jdbcType=VARCHAR}, #{refundFee,jdbcType=DECIMAL},
+    #{refundDesc,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, #{returnMsg,jdbcType=VARCHAR},
+    #{resultCode,jdbcType=VARCHAR}, #{errCode,jdbcType=VARCHAR}, #{errCodeDes,jdbcType=VARCHAR},
+    #{refundId,jdbcType=VARCHAR}, #{refundStatus,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+    #{refundRecvAccout,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR},
+    #{dateUpdated,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lilipay.wechat.entity.WechatRefundEntity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into wechat_refund
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="requestNo != null">
+        request_no,
+      </if>
+      <if test="processNo != null">
+        process_no,
+      </if>
+      <if test="targetRequestNo != null">
+        target_request_no,
+      </if>
+      <if test="wechatMemberNo != null">
+        wechat_member_no,
+      </if>
+      <if test="outRefundNo != null">
+        out_refund_no,
+      </if>
+      <if test="refundFee != null">
+        refund_fee,
+      </if>
+      <if test="refundDesc != null">
+        refund_desc,
+      </if>
+      <if test="returnCode != null">
+        return_code,
+      </if>
+      <if test="returnMsg != null">
+        return_msg,
+      </if>
+      <if test="resultCode != null">
+        result_code,
+      </if>
+      <if test="errCode != null">
+        err_code,
+      </if>
+      <if test="errCodeDes != null">
+        err_code_des,
+      </if>
+      <if test="refundId != null">
+        refund_id,
+      </if>
+      <if test="refundStatus != null">
+        refund_status,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="refundRecvAccout != null">
+        refund_recv_accout,
+      </if>
+      <if test="dateCreated != null">
+        date_created,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="dateUpdated != null">
+        date_updated,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="requestNo != null">
+        #{requestNo,jdbcType=VARCHAR},
+      </if>
+      <if test="processNo != null">
+        #{processNo,jdbcType=VARCHAR},
+      </if>
+      <if test="targetRequestNo != null">
+        #{targetRequestNo,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatMemberNo != null">
+        #{wechatMemberNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outRefundNo != null">
+        #{outRefundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundFee != null">
+        #{refundFee,jdbcType=DECIMAL},
+      </if>
+      <if test="refundDesc != null">
+        #{refundDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="returnCode != null">
+        #{returnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMsg != null">
+        #{returnMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null">
+        #{resultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        #{errCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errCodeDes != null">
+        #{errCodeDes,jdbcType=VARCHAR},
+      </if>
+      <if test="refundId != null">
+        #{refundId,jdbcType=VARCHAR},
+      </if>
+      <if test="refundStatus != null">
+        #{refundStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="refundRecvAccout != null">
+        #{refundRecvAccout,jdbcType=VARCHAR},
+      </if>
+      <if test="dateCreated != null">
+        #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lilipay.wechat.entity.WechatRefundEntity">
+    <!--@mbg.generated-->
+    update wechat_refund
+    <set>
+      <if test="requestNo != null">
+        request_no = #{requestNo,jdbcType=VARCHAR},
+      </if>
+      <if test="processNo != null">
+        process_no = #{processNo,jdbcType=VARCHAR},
+      </if>
+      <if test="targetRequestNo != null">
+        target_request_no = #{targetRequestNo,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatMemberNo != null">
+        wechat_member_no = #{wechatMemberNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outRefundNo != null">
+        out_refund_no = #{outRefundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundFee != null">
+        refund_fee = #{refundFee,jdbcType=DECIMAL},
+      </if>
+      <if test="refundDesc != null">
+        refund_desc = #{refundDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="returnCode != null">
+        return_code = #{returnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="returnMsg != null">
+        return_msg = #{returnMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null">
+        result_code = #{resultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errCode != null">
+        err_code = #{errCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errCodeDes != null">
+        err_code_des = #{errCodeDes,jdbcType=VARCHAR},
+      </if>
+      <if test="refundId != null">
+        refund_id = #{refundId,jdbcType=VARCHAR},
+      </if>
+      <if test="refundStatus != null">
+        refund_status = #{refundStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="refundRecvAccout != null">
+        refund_recv_accout = #{refundRecvAccout,jdbcType=VARCHAR},
+      </if>
+      <if test="dateCreated != null">
+        date_created = #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lilipay.wechat.entity.WechatRefundEntity">
+    <!--@mbg.generated-->
+    update wechat_refund
+    set request_no = #{requestNo,jdbcType=VARCHAR},
+    process_no = #{processNo,jdbcType=VARCHAR},
+    target_request_no = #{targetRequestNo,jdbcType=VARCHAR},
+    wechat_member_no = #{wechatMemberNo,jdbcType=VARCHAR},
+    out_refund_no = #{outRefundNo,jdbcType=VARCHAR},
+    refund_fee = #{refundFee,jdbcType=DECIMAL},
+    refund_desc = #{refundDesc,jdbcType=VARCHAR},
+    return_code = #{returnCode,jdbcType=VARCHAR},
+    return_msg = #{returnMsg,jdbcType=VARCHAR},
+    result_code = #{resultCode,jdbcType=VARCHAR},
+    err_code = #{errCode,jdbcType=VARCHAR},
+    err_code_des = #{errCodeDes,jdbcType=VARCHAR},
+    refund_id = #{refundId,jdbcType=VARCHAR},
+    refund_status = #{refundStatus,jdbcType=VARCHAR},
+    `status` = #{status,jdbcType=VARCHAR},
+    refund_recv_accout = #{refundRecvAccout,jdbcType=VARCHAR},
+    date_created = #{dateCreated,jdbcType=TIMESTAMP},
+    created_by = #{createdBy,jdbcType=VARCHAR},
+    date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+    updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--auto generated by MybatisCodeHelper on 2023-04-17-->
+  <select id="selectByRequestNo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from wechat_refund
+    where request_no=#{requestNo,jdbcType=VARCHAR}
+  </select>
+</mapper>

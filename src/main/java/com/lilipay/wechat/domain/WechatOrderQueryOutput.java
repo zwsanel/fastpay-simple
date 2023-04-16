@@ -49,11 +49,6 @@ public class WechatOrderQueryOutput {
      */
     private String errCodeDesc;
 
-    /**
-     * 微信商户号
-     */
-    private String channelMemberNo;
-
     public String getRequestNo() {
         return requestNo;
     }
@@ -124,13 +119,5 @@ public class WechatOrderQueryOutput {
 
     public void setErrCodeDesc( String errCodeDesc ) {
         this.errCodeDesc = errCodeDesc;
-    }
-
-    public String getChannelMemberNo() {
-        return channelMemberNo;
-    }
-
-    public void setChannelMemberNo( String channelMemberNo ) {
-        this.channelMemberNo = channelMemberNo;
     }
 }

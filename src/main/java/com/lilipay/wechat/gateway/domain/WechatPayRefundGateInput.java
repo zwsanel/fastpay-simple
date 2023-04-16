@@ -3,23 +3,6 @@ package com.lilipay.wechat.gateway.domain;
 public class WechatPayRefundGateInput {
 
     /**
-     * 公众账号ID
-     */
-    private String appId;
-
-    private String weixinHost;
-
-    /**
-     * 商户号
-     */
-    private String mchId;
-
-    /**
-     * apiKey
-     */
-    private String apiKey;
-
-    /**
      * 微信订单号
      */
     private String transactionId;
@@ -58,35 +41,6 @@ public class WechatPayRefundGateInput {
      * 退款资金来源
      */
     private String refundAccount;
-
-    /**
-     * 退款结果通知url
-     */
-    private String notifyUrl;
-
-    public String getAppId() {
-        return appId;
-    }
-
-    public void setAppId( String appId ) {
-        this.appId = appId;
-    }
-
-    public String getMchId() {
-        return mchId;
-    }
-
-    public void setMchId( String mchId ) {
-        this.mchId = mchId;
-    }
-
-    public String getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey( String apiKey ) {
-        this.apiKey = apiKey;
-    }
 
     public String getTransactionId() {
         return transactionId;
@@ -150,21 +104,5 @@ public class WechatPayRefundGateInput {
 
     public void setRefundAccount( String refundAccount ) {
         this.refundAccount = refundAccount;
-    }
-
-    public String getNotifyUrl() {
-        return notifyUrl;
-    }
-
-    public void setNotifyUrl( String notifyUrl ) {
-        this.notifyUrl = notifyUrl;
-    }
-
-    public String getWeixinHost() {
-        return weixinHost;
-    }
-
-    public void setWeixinHost( String weixinHost ) {
-        this.weixinHost = weixinHost;
     }
 }

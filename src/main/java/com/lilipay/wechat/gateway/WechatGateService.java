@@ -39,14 +39,4 @@ public interface WechatGateService {
      * 微信退款通知
      */
     Response<WechatPayRefundNoticeGateOutput> acceptRefundNotice( WechatPayRefundNoticeGateInput wechatPayRefundNoticeGateInput );
-
-    /**
-     * 企业付款
-     */
-    Response<WechatTransfersGateOutput> transfers( WechatTransfersGateInput wechatTransfersGateInput );
-
-    /**
-     * 查询企业付款
-     */
-    Response<WechatTransfersQueryGateOutput> transfersQuery( WechatTransfersQueryGateInput wechatTransfersQueryGateInput );
 }
