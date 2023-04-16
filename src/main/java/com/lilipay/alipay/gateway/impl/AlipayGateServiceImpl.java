@@ -21,9 +21,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AlipayGatewayServiceImpl implements AlipayGateService {
+public class AlipayGateServiceImpl implements AlipayGateService {
 
-    private static final Logger logger = LogManager.getLogger( AlipayGatewayServiceImpl.class );
+    private static final Logger logger = LogManager.getLogger( AlipayGateServiceImpl.class );
 
     @Value( "${alipay.serverUrl}" )
     private String serverUrl;

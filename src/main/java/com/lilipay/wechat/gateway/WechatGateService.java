@@ -26,11 +26,6 @@ public interface WechatGateService {
     Response<WechatCloseOrderGateOutput> closeOrder( WechatCloseOrderGateInput wechatCloseOrderGateInput );
 
     /**
-     * 下载对账单
-     */
-    Response<WechatPayDownloadBillGateOutput> downloadBill( WechatPayDownloadBillGateInput wechatPayDownloadBillGateInput );
-
-    /**
      * 申请退款
      */
     Response<WechatPayRefundGateOutput> refund( WechatPayRefundGateInput wechatPayRefundGateInput );
