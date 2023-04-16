@@ -9,57 +9,57 @@ import org.springframework.stereotype.Service;
 public class WechatGateServiceImpl implements WechatGateService {
 
     @Override
-    public Response<WechatPayUnifiedOrderGateOutput> unifiedOrder( WechatPayUnifiedOrderGateInput weixinUnifiedOrderRequest ) {
+    public Response<WechatPayUnifiedOrderGateOutput> unifiedOrder( WechatPayUnifiedOrderGateInput wechatPayUnifiedOrderGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatPayOrderQueryGateOutput> orderQuery( WechatPayOrderQueryGateInput weixinOrderQueryRequest ) {
+    public Response<WechatPayOrderQueryGateOutput> orderQuery( WechatPayOrderQueryGateInput wechatPayOrderQueryGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatPayNoticeGateOutput> acceptNotice( WechatPayNoticeGateInput weixinPayNoticeRequest ) {
+    public Response<WechatPayNoticeGateOutput> acceptNotice( WechatPayNoticeGateInput wechatPayNoticeGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatCloseOrderGateOutput> closeOrder( WechatCloseOrderGateInput weixinCloseOrderRequest ) {
+    public Response<WechatCloseOrderGateOutput> closeOrder( WechatCloseOrderGateInput wechatCloseOrderGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatPayDownloadBillGateOutput> downloadBill( WechatPayDownloadBillGateInput weixinDownloadBillRequest ) {
+    public Response<WechatPayDownloadBillGateOutput> downloadBill( WechatPayDownloadBillGateInput wechatPayDownloadBillGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatPayRefundGateOutput> refund( WechatPayRefundGateInput weixinPayRefundRequest ) {
+    public Response<WechatPayRefundGateOutput> refund( WechatPayRefundGateInput wechatPayRefundGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatPayRefundQueryGateOutput> refundQuery( WechatPayRefundQueryGateInput weixinPayRefundQueryRequest ) {
+    public Response<WechatPayRefundQueryGateOutput> refundQuery( WechatPayRefundQueryGateInput wechatPayRefundQueryGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatPayRefundNoticeGateOutput> acceptRefundNotice( WechatPayRefundNoticeGateInput weixinPayRefundNoticeRequest ) {
+    public Response<WechatPayRefundNoticeGateOutput> acceptRefundNotice( WechatPayRefundNoticeGateInput wechatPayRefundNoticeGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatOrderRepayGateOutput> orderRepay( WechatOrderRepayGateInput weixinOrderRepayRequest ) {
+    public Response<WechatOrderRepayGateOutput> orderRepay( WechatOrderRepayGateInput wechatOrderRepayGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatTransfersGateOutput> transfers( WechatTransfersGateInput transfersRequest ) {
+    public Response<WechatTransfersGateOutput> transfers( WechatTransfersGateInput wechatTransfersGateInput ) {
         return null;
     }
 
     @Override
-    public Response<WechatTransfersQueryGateOutput> transfersQuery( WechatTransfersQueryGateInput transfersQueryRequest ) {
+    public Response<WechatTransfersQueryGateOutput> transfersQuery( WechatTransfersQueryGateInput wechatTransfersQueryGateInput ) {
         return null;
     }
 }

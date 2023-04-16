@@ -20,7 +20,7 @@ public class WechatUnifiedOrderOutput {
     /**
      * 调起支付请求参数
      */
-    private WeixinPayRequest weixinPayRequest;
+    private WechatPayRequest wechatPayRequest;
 
     public String getRequestNo() {
         return requestNo;
@@ -46,11 +46,11 @@ public class WechatUnifiedOrderOutput {
         this.status = status;
     }
 
-    public WeixinPayRequest getWeixinPayRequest() {
-        return weixinPayRequest;
+    public WechatPayRequest getWechatPayRequest() {
+        return wechatPayRequest;
     }
 
-    public void setWeixinPayRequest( WeixinPayRequest weixinPayRequest ) {
-        this.weixinPayRequest = weixinPayRequest;
+    public void setWechatPayRequest( WechatPayRequest wechatPayRequest ) {
+        this.wechatPayRequest = wechatPayRequest;
     }
 }

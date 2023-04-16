@@ -14,7 +14,7 @@ public interface AlipayService {
      * @param alipayAppPayRequest APP支付请求
      * @return APP支付订单信息 前端使用订单信息唤起支付宝SDK
      */
-    Response<AlipayAppPayOrderInfo> appPay( AlipayAppPayRequest alipayAppPayRequest );
+    Response<AlipayAppPayOrderInfo> appPay( AlipayAppPayInput alipayAppPayRequest );
 
     /**
      * 订单查询
@@ -22,14 +22,14 @@ public interface AlipayService {
      * @param orderQueryRequest 订单查询请求
      * @return 订单信息
      */
-    Response<AlipayAppPayTradeResult> tradeQuery( AlipayTradeQueryRequest orderQueryRequest );
+    Response<AlipayAppPayTradeOutput> tradeQuery( AlipayTradeQueryInput orderQueryRequest );
 
     /**
      * 订单同步
      *
      * @return 订单信息
      */
-    Response<AlipayAppPayTradeResult> tradeSync( AlipayTradeSyncRequest tradeSyncRequest );
+    Response<AlipayAppPayTradeOutput> tradeSync( AlipayTradeSyncInput tradeSyncRequest );
 
     /**
      * 尝试关闭订单 <br/>
@@ -38,5 +38,5 @@ public interface AlipayService {
      * @param orderCloseRequest 订单关闭请求
      * @return 订单信息
      */
-    Response<AlipayAppPayTradeResult> orderClose( AlipayOrderCloseRequest orderCloseRequest );
+    Response<AlipayAppPayTradeOutput> orderClose( AlipayOrderCloseInput orderCloseRequest );
 }

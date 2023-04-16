@@ -96,32 +96,32 @@ public class WechatServiceImpl implements WechatService {
             return ResponseUtils.fail( "ERROR", unifiedOrderResponse.getErrCodeDes() );
         }
 
-        WechatUnifiedOrderOutput weixinUnifiedOrderResponse = new WechatUnifiedOrderOutput();
-        weixinUnifiedOrderResponse.setRequestNo( wechatEntity.getRequestNo() );
-        weixinUnifiedOrderResponse.setStatus( wechatEntity.getStatus() );
-        weixinUnifiedOrderResponse.setOrderNo( wechatEntity.getOrderNo() );
+        WechatUnifiedOrderOutput wechatUnifiedOrderOutput = new WechatUnifiedOrderOutput();
+        wechatUnifiedOrderOutput.setRequestNo( wechatEntity.getRequestNo() );
+        wechatUnifiedOrderOutput.setStatus( wechatEntity.getStatus() );
+        wechatUnifiedOrderOutput.setOrderNo( wechatEntity.getOrderNo() );
         if ( Objects.equals( wechatEntity.getStatus(), Constants.WECHAT_PAYING ) ) { //  支付中
-            WeixinPayRequest weixinPayRequest = new WeixinPayRequest();
-            weixinPayRequest.setAppId( wechatEntity.getAppId() );
-            weixinPayRequest.setPartnerId( wechatEntity.getWechatMemberNo() );
-            weixinPayRequest.setPrepayId( wechatEntity.getPrepayId() );
+            WechatPayRequest wechatPayRequest = new WechatPayRequest();
+            wechatPayRequest.setAppId( wechatEntity.getAppId() );
+            wechatPayRequest.setPartnerId( wechatEntity.getWechatMemberNo() );
+            wechatPayRequest.setPrepayId( wechatEntity.getPrepayId() );
             WechatAppPayOutput appPayRequest = unifiedOrderResponse.getAppPayRequest();
             if ( Objects.nonNull( appPayRequest ) ) {
-                weixinPayRequest.setPackageStr( appPayRequest.getWxPackage() );
-                weixinPayRequest.setSign( appPayRequest.getSign() );
-                weixinPayRequest.setTimestamp( appPayRequest.getTimeStamp() );
-                weixinPayRequest.setNonceStr( appPayRequest.getNonceStr() );
-                weixinPayRequest.setSignType( appPayRequest.getSignType() );
+                wechatPayRequest.setPackageStr( appPayRequest.getWxPackage() );
+                wechatPayRequest.setSign( appPayRequest.getSign() );
+                wechatPayRequest.setTimestamp( appPayRequest.getTimeStamp() );
+                wechatPayRequest.setNonceStr( appPayRequest.getNonceStr() );
+                wechatPayRequest.setSignType( appPayRequest.getSignType() );
             }
             if ( StringUtils.isNotEmpty( wechatEntity.getMwebUrl() ) ) {
-                weixinPayRequest.setMwebUrl( wechatEntity.getMwebUrl() );
+                wechatPayRequest.setMwebUrl( wechatEntity.getMwebUrl() );
             }
             if ( StringUtils.isNotEmpty( wechatEntity.getCodeUrl() ) ) {
-                weixinPayRequest.setCodeUrl( wechatEntity.getCodeUrl() );
+                wechatPayRequest.setCodeUrl( wechatEntity.getCodeUrl() );
             }
-            weixinUnifiedOrderResponse.setWeixinPayRequest( weixinPayRequest );
+            wechatUnifiedOrderOutput.setWechatPayRequest( wechatPayRequest );
         }
-        return ResponseUtils.success( weixinUnifiedOrderResponse );
+        return ResponseUtils.success( wechatUnifiedOrderOutput );
     }
 
     @Override
@@ -160,7 +160,7 @@ public class WechatServiceImpl implements WechatService {
     }
 
     @Override
-    public Response<WechatTradeQueryOutput> weixinTradeQuery( WechatTradeQueryInput wechatTradeQueryInput ) {
+    public Response<WechatTradeQueryOutput> tradeQuery( WechatTradeQueryInput wechatTradeQueryInput ) {
         return null;
     }
 }

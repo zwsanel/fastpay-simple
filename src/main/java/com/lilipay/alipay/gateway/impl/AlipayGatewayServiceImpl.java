@@ -11,7 +11,7 @@ import com.alipay.api.request.AlipayTradeQueryRequest;
 import com.alipay.api.response.AlipayTradeAppPayResponse;
 import com.alipay.api.response.AlipayTradeCloseResponse;
 import com.alipay.api.response.AlipayTradeQueryResponse;
-import com.lilipay.alipay.gateway.AlipayGatewayService;
+import com.lilipay.alipay.gateway.AlipayGateService;
 import com.lilipay.alipay.gateway.domain.*;
 import com.lilipay.common.Response;
 import com.lilipay.common.ResponseUtils;
@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AlipayGatewayServiceImpl implements AlipayGatewayService {
+public class AlipayGatewayServiceImpl implements AlipayGateService {
 
     private static final Logger logger = LogManager.getLogger( AlipayGatewayServiceImpl.class );
 
@@ -54,7 +54,7 @@ public class AlipayGatewayServiceImpl implements AlipayGatewayService {
     }
 
     @Override
-    public Response<AlipayAppPayGatewayResult> appPay( AlipayAppPayGatewayRequest appPayRequest ) {
+    public Response<AlipayAppPayGateOutput> appPay( AlipayAppPayGateInput appPayRequest ) {
         try {
             AlipayTradeAppPayModel tradeAppPayModel = new AlipayTradeAppPayModel();
             tradeAppPayModel.setTimeoutExpress( appPayRequest.getTimeoutExpress() );
@@ -69,7 +69,7 @@ public class AlipayGatewayServiceImpl implements AlipayGatewayService {
             request.setBizModel( tradeAppPayModel );
             request.setNotifyUrl( notifyUrl );
             AlipayTradeAppPayResponse response = alipayClient().sdkExecute( request );
-            AlipayAppPayGatewayResult result = new AlipayAppPayGatewayResult();
+            AlipayAppPayGateOutput result = new AlipayAppPayGateOutput();
             result.setCode( response.getCode() );
             result.setMsg( response.getMsg() );
             result.setSubCode( response.getSubCode() );
@@ -83,14 +83,14 @@ public class AlipayGatewayServiceImpl implements AlipayGatewayService {
     }
 
     @Override
-    public Response<AlipayTradeQueryGatewayResult> tradeQuery( AlipayTradeQueryGatewayRequest tradeQueryRequest ) {
+    public Response<AlipayTradeQueryGateOutput> tradeQuery( AlipayTradeQueryGateInput tradeQueryRequest ) {
         try {
             AlipayTradeQueryModel model = new AlipayTradeQueryModel();
             model.setOutTradeNo( tradeQueryRequest.getOutTradeNo() );
             AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
             request.setBizModel( model );
             AlipayTradeQueryResponse response = alipayClient().execute( request );
-            AlipayTradeQueryGatewayResult result = new AlipayTradeQueryGatewayResult();
+            AlipayTradeQueryGateOutput result = new AlipayTradeQueryGateOutput();
             result.setTradeNo( response.getTradeNo() );
             result.setOutTradeNo( response.getOutTradeNo() );
             result.setBuyerLogonId( response.getBuyerLogonId() );
@@ -109,14 +109,14 @@ public class AlipayGatewayServiceImpl implements AlipayGatewayService {
     }
 
     @Override
-    public Response<AlipayTradeCloseGatewayResult> tradeClose( AlipayTradeCloseGatewayRequest tradeCloseRequest ) {
+    public Response<AlipayTradeCloseGateOutput> tradeClose( AlipayTradeCloseGateInput tradeCloseRequest ) {
         try {
             AlipayTradeCloseModel model = new AlipayTradeCloseModel();
             model.setOutTradeNo( tradeCloseRequest.getOutTradeNo() );
             AlipayTradeCloseRequest request = new AlipayTradeCloseRequest();
             request.setBizModel( model );
             AlipayTradeCloseResponse response = alipayClient().execute( request );
-            AlipayTradeCloseGatewayResult tradeCloseResult = new AlipayTradeCloseGatewayResult();
+            AlipayTradeCloseGateOutput tradeCloseResult = new AlipayTradeCloseGateOutput();
             tradeCloseResult.setTradeNo( response.getTradeNo() );
             tradeCloseResult.setOutTradeNo( response.getOutTradeNo() );
             tradeCloseResult.setCode( response.getCode() );

@@ -12,7 +12,7 @@ public class WechatRefundOutput {
     /**
      * 微信退款单号
      */
-    private String weixinRefundNo;
+    private String wechatRefundNo;
 
     /**
      * 退款状态
@@ -43,16 +43,16 @@ public class WechatRefundOutput {
         return requestNo;
     }
 
-    public String getWeixinRefundNo() {
-        return weixinRefundNo;
-    }
-
-    public void setWeixinRefundNo( String weixinRefundNo ) {
-        this.weixinRefundNo = weixinRefundNo;
-    }
-
     public void setRequestNo( String requestNo ) {
         this.requestNo = requestNo;
+    }
+
+    public String getWechatRefundNo() {
+        return wechatRefundNo;
+    }
+
+    public void setWechatRefundNo( String wechatRefundNo ) {
+        this.wechatRefundNo = wechatRefundNo;
     }
 
     public String getStatus() {

@@ -15,7 +15,7 @@ public class WechatPrepayQueryOutput {
     /**
      * 调起支付请求参数
      */
-    private WeixinPayRequest weixinPayRequest;
+    private WechatPayRequest weixinPayRequest;
 
     public String getRequestNo() {
         return requestNo;
@@ -33,11 +33,11 @@ public class WechatPrepayQueryOutput {
         this.status = status;
     }
 
-    public WeixinPayRequest getWeixinPayRequest() {
+    public WechatPayRequest getWeixinPayRequest() {
         return weixinPayRequest;
     }
 
-    public void setWeixinPayRequest( WeixinPayRequest weixinPayRequest ) {
+    public void setWeixinPayRequest( WechatPayRequest weixinPayRequest ) {
         this.weixinPayRequest = weixinPayRequest;
     }
 }

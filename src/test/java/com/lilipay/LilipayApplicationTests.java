@@ -1,8 +1,8 @@
 package com.lilipay;
 
 import com.lilipay.alipay.AlipayService;
-import com.lilipay.alipay.domain.AlipayAppPayRequest;
-import com.lilipay.alipay.domain.AlipayTradeQueryRequest;
+import com.lilipay.alipay.domain.AlipayAppPayInput;
+import com.lilipay.alipay.domain.AlipayTradeQueryInput;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -21,7 +21,7 @@ class LilipayApplicationTests {
 
 	@Test
 	void alipayAppPay() {
-		AlipayAppPayRequest alipayAppPayRequest = new AlipayAppPayRequest();
+		AlipayAppPayInput alipayAppPayRequest = new AlipayAppPayInput();
 		alipayAppPayRequest.setRequestNo( String.valueOf( System.currentTimeMillis() ) );
 		alipayAppPayRequest.setSubject("TEST");
 		alipayAppPayRequest.setTotalAmount(new BigDecimal( "1.00" ) );
@@ -33,7 +33,7 @@ class LilipayApplicationTests {
 	@Test
 	void alipayTradeQuery() {
 		String requestNo = String.valueOf( System.currentTimeMillis() );
-		AlipayAppPayRequest alipayAppPayRequest = new AlipayAppPayRequest();
+		AlipayAppPayInput alipayAppPayRequest = new AlipayAppPayInput();
 		alipayAppPayRequest.setRequestNo( requestNo );
 		alipayAppPayRequest.setSubject("TEST");
 		alipayAppPayRequest.setTotalAmount(new BigDecimal( "1.00" ) );
@@ -41,7 +41,7 @@ class LilipayApplicationTests {
 		alipayAppPayRequest.setBody("测试");
 		System.out.println( alipayService.appPay( alipayAppPayRequest ) );
 
-		AlipayTradeQueryRequest orderQueryRequest = new AlipayTradeQueryRequest();
+		AlipayTradeQueryInput orderQueryRequest = new AlipayTradeQueryInput();
 		orderQueryRequest.setRequestNo(requestNo);
 		System.out.println( alipayService.tradeQuery( orderQueryRequest ) );
 	}

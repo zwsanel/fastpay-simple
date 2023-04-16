@@ -74,5 +74,5 @@ public interface WechatService {
      * @param wechatTradeQueryInput 微信交易单号或商户订单号
      * @return 查询结果
      */
-    Response<WechatTradeQueryOutput> weixinTradeQuery( WechatTradeQueryInput wechatTradeQueryInput );
+    Response<WechatTradeQueryOutput> tradeQuery( WechatTradeQueryInput wechatTradeQueryInput );
 }
