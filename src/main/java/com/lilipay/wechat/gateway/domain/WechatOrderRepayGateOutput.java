@@ -4,13 +4,13 @@ package com.lilipay.wechat.gateway.domain;
 public class WechatOrderRepayGateOutput {
 
 
-    private WechatAppPayOutputRequest appPayRequest;
+    private WechatAppPayOutput appPayRequest;
 
-    public WechatAppPayOutputRequest getAppPayRequest() {
+    public WechatAppPayOutput getAppPayRequest() {
         return appPayRequest;
     }
 
-    public void setAppPayRequest( WechatAppPayOutputRequest appPayRequest ) {
+    public void setAppPayRequest( WechatAppPayOutput appPayRequest ) {
         this.appPayRequest = appPayRequest;
     }
 }

@@ -45,7 +45,7 @@ public class WechatPayUnifiedOrderGateOutput {
     /**
      * 微信app端支付参数
      */
-    private WechatAppPayOutputRequest appPayRequest;
+    private WechatAppPayOutput appPayRequest;
 
     public String getReturnCode() {
         return returnCode;
@@ -111,11 +111,11 @@ public class WechatPayUnifiedOrderGateOutput {
         this.mwebUrl = mwebUrl;
     }
 
-    public WechatAppPayOutputRequest getAppPayRequest() {
+    public WechatAppPayOutput getAppPayRequest() {
         return appPayRequest;
     }
 
-    public void setAppPayRequest( WechatAppPayOutputRequest appPayRequest ) {
+    public void setAppPayRequest( WechatAppPayOutput appPayRequest ) {
         this.appPayRequest = appPayRequest;
     }
 }

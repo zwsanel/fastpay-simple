@@ -8,7 +8,7 @@ import com.lilipay.wechat.WechatService;
 import com.lilipay.wechat.domain.*;
 import com.lilipay.wechat.entity.WechatEntity;
 import com.lilipay.wechat.gateway.WechatGateService;
-import com.lilipay.wechat.gateway.domain.WechatAppPayOutputRequest;
+import com.lilipay.wechat.gateway.domain.WechatAppPayOutput;
 import com.lilipay.wechat.gateway.domain.WechatPayUnifiedOrderGateInput;
 import com.lilipay.wechat.gateway.domain.WechatPayUnifiedOrderGateOutput;
 import com.lilipay.wechat.mapper.WechatEntityMapper;
@@ -105,7 +105,7 @@ public class WechatServiceImpl implements WechatService {
             weixinPayRequest.setAppId( wechatEntity.getAppId() );
             weixinPayRequest.setPartnerId( wechatEntity.getWechatMemberNo() );
             weixinPayRequest.setPrepayId( wechatEntity.getPrepayId() );
-            WechatAppPayOutputRequest appPayRequest = unifiedOrderResponse.getAppPayRequest();
+            WechatAppPayOutput appPayRequest = unifiedOrderResponse.getAppPayRequest();
             if ( Objects.nonNull( appPayRequest ) ) {
                 weixinPayRequest.setPackageStr( appPayRequest.getWxPackage() );
                 weixinPayRequest.setSign( appPayRequest.getSign() );

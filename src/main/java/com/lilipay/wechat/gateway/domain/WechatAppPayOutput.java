@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType( value = XmlAccessType.FIELD )
 @XmlRootElement( name = "xml" )
-public class WechatAppPayOutputRequest {
+public class WechatAppPayOutput {
     /**
      * 应用ID
      */
