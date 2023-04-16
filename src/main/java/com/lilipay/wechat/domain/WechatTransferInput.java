@@ -55,7 +55,7 @@ public class WechatTransferInput {
     private String ip;
 
     /**
-     * 通知类型 {@link com.qihoo.finance.pcs.weixin.constants.WeixinNotifyType}
+     * 通知类型
      */
     private String notifyType;
 

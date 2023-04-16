@@ -6,7 +6,7 @@ public class WechatOrderCloseInput {
     /**
      * 商户流水号
      */
-    
+
     private String requestNo;
 
     public String getRequestNo() {

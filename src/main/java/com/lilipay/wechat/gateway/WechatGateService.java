@@ -41,11 +41,6 @@ public interface WechatGateService {
     Response<WechatPayRefundNoticeGateOutput> acceptRefundNotice( WechatPayRefundNoticeGateInput wechatPayRefundNoticeGateInput );
 
     /**
-     * 预付单查询
-     */
-    Response<WechatOrderRepayGateOutput> orderRepay( WechatOrderRepayGateInput wechatOrderRepayGateInput );
-
-    /**
      * 企业付款
      */
     Response<WechatTransfersGateOutput> transfers( WechatTransfersGateInput wechatTransfersGateInput );
