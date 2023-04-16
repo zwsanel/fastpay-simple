@@ -1,6 +1,6 @@
 package com.lilipay.common;
 
-public class Response<T>  {
+public class Response<T> {
 
     private Boolean success;
 

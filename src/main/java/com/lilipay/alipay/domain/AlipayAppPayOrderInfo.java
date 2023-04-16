@@ -1,8 +1,6 @@
 package com.lilipay.alipay.domain;
 
-import com.lilipay.common.BaseDomain;
-
-public class AlipayAppPayOrderInfo  {
+public class AlipayAppPayOrderInfo {
 
     /**
      * 唤起支付宝SDK所需的订单信息

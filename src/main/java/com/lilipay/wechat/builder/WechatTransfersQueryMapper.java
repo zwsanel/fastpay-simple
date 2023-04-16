@@ -5,7 +5,7 @@ import com.lilipay.wechat.gateway.message.WechatTransfersQueryOutput;
 
 public final class WechatTransfersQueryMapper {
 
-    public static WechatTransfersQueryGateOutput mapper(WechatTransfersQueryOutput output) {
+    public static WechatTransfersQueryGateOutput mapper( WechatTransfersQueryOutput output ) {
         WechatTransfersQueryGateOutput weixinTransfersQueryResponse = new WechatTransfersQueryGateOutput();
         weixinTransfersQueryResponse.setReturnCode( output.getReturn_code() );
         weixinTransfersQueryResponse.setReturnMsg( output.getReturn_msg() );
