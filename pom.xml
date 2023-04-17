@@ -8,11 +8,11 @@
     <version>2.7.8</version>
     <relativePath/>
   </parent>
-  <groupId>com.lilipay</groupId>
-  <artifactId>lilipay-simple</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>lilipay</name>
-  <description>Demo project for Spring Boot</description>
+  <groupId>com.fastpay</groupId>
+  <artifactId>fastpay-simple</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>fastpay</name>
+  <description>FASTPAY 快速支付一站式支付平台供应商</description>
   <properties>
     <java.version>1.8</java.version>
   </properties>
