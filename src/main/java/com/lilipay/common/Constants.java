@@ -21,4 +21,12 @@ public interface Constants {
     String WECHAT_REFUND_FAIL = "FAIL";
 
     String WECHAT_REFUND_SUCCESS = "SUCCESS";
+
+    String BANK_PAY_PROCESSING = "PROCESSING";
+
+    String BANK_PAY_SUCCESS = "SUCCESS";
+
+    String BANK_PAY_FAIL = "FAIL";
+
+    String ALLINPAY_DATE_PATTERN = "yyyyMMddHHmmss";
 }

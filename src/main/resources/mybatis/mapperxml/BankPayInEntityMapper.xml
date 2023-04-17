@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lilipay.bankpay.mapper.BankPayInEntityMapper">
+  <resultMap id="BaseResultMap" type="com.lilipay.bankpay.entity.BankPayInEntity">
+    <!--@mbg.generated-->
+    <!--@Table bankpay_in-->
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="request_no" jdbcType="VARCHAR" property="requestNo"/>
+    <result column="process_no" jdbcType="VARCHAR" property="processNo"/>
+    <result column="card_no" jdbcType="VARCHAR" property="cardNo"/>
+    <result column="card_name" jdbcType="VARCHAR" property="cardName"/>
+    <result column="card_mobile" jdbcType="VARCHAR" property="cardMobile"/>
+    <result column="id_no" jdbcType="VARCHAR" property="idNo"/>
+    <result column="bank_code" jdbcType="VARCHAR" property="bankCode"/>
+    <result column="amount" jdbcType="DECIMAL" property="amount"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
+    <result column="date_created" jdbcType="TIMESTAMP" property="dateCreated"/>
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+    <result column="date_updated" jdbcType="TIMESTAMP" property="dateUpdated"/>
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, request_no, process_no, card_no, card_name, card_mobile, id_no, bank_code, amount,
+    `status`, date_created, created_by, date_updated, updated_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List"/>
+    from bankpay_in
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from bankpay_in
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lilipay.bankpay.entity.BankPayInEntity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bankpay_in (request_no, process_no, card_no,
+    card_name, card_mobile, id_no,
+    bank_code, amount, `status`,
+    date_created, created_by, date_updated,
+    updated_by)
+    values (#{requestNo,jdbcType=VARCHAR}, #{processNo,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR},
+    #{cardName,jdbcType=VARCHAR}, #{cardMobile,jdbcType=VARCHAR}, #{idNo,jdbcType=VARCHAR},
+    #{bankCode,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR},
+    #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{dateUpdated,jdbcType=TIMESTAMP},
+    #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lilipay.bankpay.entity.BankPayInEntity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into bankpay_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="requestNo != null">
+        request_no,
+      </if>
+      <if test="processNo != null">
+        process_no,
+      </if>
+      <if test="cardNo != null">
+        card_no,
+      </if>
+      <if test="cardName != null">
+        card_name,
+      </if>
+      <if test="cardMobile != null">
+        card_mobile,
+      </if>
+      <if test="idNo != null">
+        id_no,
+      </if>
+      <if test="bankCode != null">
+        bank_code,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="dateCreated != null">
+        date_created,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="dateUpdated != null">
+        date_updated,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="requestNo != null">
+        #{requestNo,jdbcType=VARCHAR},
+      </if>
+      <if test="processNo != null">
+        #{processNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null">
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardName != null">
+        #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardMobile != null">
+        #{cardMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idNo != null">
+        #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dateCreated != null">
+        #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lilipay.bankpay.entity.BankPayInEntity">
+    <!--@mbg.generated-->
+    update bankpay_in
+    <set>
+      <if test="requestNo != null">
+        request_no = #{requestNo,jdbcType=VARCHAR},
+      </if>
+      <if test="processNo != null">
+        process_no = #{processNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null">
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardName != null">
+        card_name = #{cardName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardMobile != null">
+        card_mobile = #{cardMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idNo != null">
+        id_no = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dateCreated != null">
+        date_created = #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lilipay.bankpay.entity.BankPayInEntity">
+    <!--@mbg.generated-->
+    update bankpay_in
+    set request_no = #{requestNo,jdbcType=VARCHAR},
+    process_no = #{processNo,jdbcType=VARCHAR},
+    card_no = #{cardNo,jdbcType=VARCHAR},
+    card_name = #{cardName,jdbcType=VARCHAR},
+    card_mobile = #{cardMobile,jdbcType=VARCHAR},
+    id_no = #{idNo,jdbcType=VARCHAR},
+    bank_code = #{bankCode,jdbcType=VARCHAR},
+    amount = #{amount,jdbcType=DECIMAL},
+    `status` = #{status,jdbcType=VARCHAR},
+    date_created = #{dateCreated,jdbcType=TIMESTAMP},
+    created_by = #{createdBy,jdbcType=VARCHAR},
+    date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+    updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
