@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.math.BigDecimal;
 
 @SpringBootTest
-class LilipayApplicationTests {
+class FastPayApplicationTests {
 
 	@Resource
 	private AlipayService alipayService;
