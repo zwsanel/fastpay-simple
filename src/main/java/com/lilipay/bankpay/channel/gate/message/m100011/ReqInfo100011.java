@@ -7,7 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement( name = "INFO" )
 @XmlAccessorType( XmlAccessType.FIELD )
-public class ReqInfo {
+public class ReqInfo100011 {
+
     @XmlElement( name = "TRX_CODE" ) //交易代码
     private String trxCode;
 

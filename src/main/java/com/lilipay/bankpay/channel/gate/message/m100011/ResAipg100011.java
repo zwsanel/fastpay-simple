@@ -7,27 +7,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement( name = "AIPG" )
 @XmlAccessorType( XmlAccessType.FIELD )
-public class ResAipg {
+public class ResAipg100011 {
 
     @XmlElement( name = "INFO" )
-    private ResInfo info;
+    private ResInfo100011 info;
 
     @XmlElement( name = "TRANSRET" )
-    private ResTransret transret;
+    private ResTransret100011 transret;
 
-    public ResInfo getInfo() {
+    public ResInfo100011 getInfo() {
         return info;
     }
 
-    public void setInfo( ResInfo info ) {
+    public void setInfo( ResInfo100011 info ) {
         this.info = info;
     }
 
-    public ResTransret getTransret() {
+    public ResTransret100011 getTransret() {
         return transret;
     }
 
-    public void setTransret( ResTransret transret ) {
+    public void setTransret( ResTransret100011 transret ) {
         this.transret = transret;
     }
 }

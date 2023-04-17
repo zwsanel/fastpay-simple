@@ -4,27 +4,27 @@ import javax.xml.bind.annotation.*;
 
 @XmlRootElement( name = "AIPG" )
 @XmlAccessorType( XmlAccessType.FIELD )
-public class ReqAipg {
+public class ReqAipg100011 {
 
     @XmlElement( name = "INFO" )
-    private ReqInfo info;
+    private ReqInfo100011 info;
 
     @XmlElement( name = "TRANS" )
-    private ReqTrans trans;
+    private ReqTrans100011 trans;
 
-    public ReqInfo getInfo() {
+    public ReqInfo100011 getInfo() {
         return info;
     }
 
-    public void setInfo( ReqInfo info ) {
+    public void setInfo( ReqInfo100011 info ) {
         this.info = info;
     }
 
-    public ReqTrans getTrans() {
+    public ReqTrans100011 getTrans() {
         return trans;
     }
 
-    public void setTrans( ReqTrans trans ) {
+    public void setTrans( ReqTrans100011 trans ) {
         this.trans = trans;
     }
 }

@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement( name = "TRANS" )
 @XmlAccessorType( XmlAccessType.FIELD )
-public class ReqTrans {
+public class ReqTrans100011 {
 
     @XmlElement( name = "BUSINESS_CODE" ) //业务代码
     private String businessCode;

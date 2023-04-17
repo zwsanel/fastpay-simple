@@ -3,10 +3,9 @@ package com.lilipay.bankpay.channel.gate.message.m100011;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType( XmlAccessType.FIELD )
-public class ResTransret {
+public class ResTransret100011 {
 
     // 返回码
     @XmlElement( name = "RET_CODE" )

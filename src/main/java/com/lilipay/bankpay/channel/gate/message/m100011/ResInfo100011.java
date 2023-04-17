@@ -3,10 +3,9 @@ package com.lilipay.bankpay.channel.gate.message.m100011;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType( XmlAccessType.FIELD )
-public class ResInfo {
+public class ResInfo100011 {
 
     // 交易代码
     @XmlElement( name = "TRX_CODE" )

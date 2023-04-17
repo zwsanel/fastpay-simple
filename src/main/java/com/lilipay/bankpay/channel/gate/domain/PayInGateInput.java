@@ -15,11 +15,6 @@ public class PayInGateInput {
     private String processNo;
 
     /**
-     * 订单号
-     */
-    private String orderNo;
-
-    /**
      * 银行卡
      */
     private String cardNo;
@@ -48,6 +43,11 @@ public class PayInGateInput {
      * 还款金额
      */
     private BigDecimal amount;
+
+    /**
+     * 订单号
+     */
+    private String orderNo;
 
     public String getRequestNo() {
         return requestNo;
