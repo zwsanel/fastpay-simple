@@ -10,12 +10,36 @@
   </parent>
   <groupId>com.fastpay</groupId>
   <artifactId>fastpay-simple</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>${fastpay.version}</version>
+  <packaging>pom</packaging>
   <name>fastpay</name>
-  <description>FASTPAY 快速支付一站式支付平台供应商</description>
+  <description>FASTPAY 快速支付支付平台供应商</description>
+  <modules>
+    <module>fastpay-simple-app</module>
+    <module>fastpay-simple-api</module>
+    <module>fastpay-simple-admin</module>
+  </modules>
   <properties>
     <java.version>1.8</java.version>
+    <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+    <fastpay.version>1.0.0-SNAPSHOT</fastpay.version>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.fastpay</groupId>
+        <artifactId>fastpay-simple-api</artifactId>
+        <version>${fastpay.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct</artifactId>
+        <version>${org.mapstruct.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>

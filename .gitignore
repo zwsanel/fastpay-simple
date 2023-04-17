@@ -2,3 +2,4 @@
 .mvn
 
 target
+node_modules

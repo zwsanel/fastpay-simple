@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <settings>
+    <!-- 打印查询语句 -->
+    <setting name="logImpl" value="STDOUT_LOGGING"/>
+    <!-- 控制全局缓存（二级缓存）-->
+    <setting name="cacheEnabled" value="true"/>
+    <!-- 延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。默认 false  -->
+    <setting name="lazyLoadingEnabled" value="true"/>
+    <!-- 当开启时，任何方法的调用都会加载该对象的所有属性。默认 false，可通过select标签的 fetchType来覆盖-->
+    <setting name="aggressiveLazyLoading" value="false"/>
+
+    <setting name="localCacheScope" value="SESSION"/>
+  </settings>
+
+  <typeAliases>
+    <!--定义别名,避免写全限定类名-->
+    <typeAlias alias="Integer" type="java.lang.Integer"/>
+    <typeAlias alias="Long" type="java.lang.Long"/>
+    <typeAlias alias="HashMap" type="java.util.HashMap"/>
+    <typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap"/>
+    <typeAlias alias="ArrayList" type="java.util.ArrayList"/>
+    <typeAlias alias="LinkedList" type="java.util.LinkedList"/>
+  </typeAliases>
+</configuration>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fastpay.admin.mapper.AdminMenuEntityMapper">
+  <resultMap id="BaseResultMap" type="com.fastpay.admin.entity.AdminMenuEntity">
+    <!--@mbg.generated-->
+    <!--@Table admin_menu-->
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="menu_no" jdbcType="VARCHAR" property="menuNo"/>
+    <result column="title" jdbcType="VARCHAR" property="title"/>
+    <result column="caption" jdbcType="VARCHAR" property="caption"/>
+    <result column="icon" jdbcType="VARCHAR" property="icon"/>
+    <result column="link" jdbcType="VARCHAR" property="link"/>
+    <result column="status" jdbcType="VARCHAR" property="status"/>
+    <result column="refund_recv_accout" jdbcType="VARCHAR" property="refundRecvAccout"/>
+    <result column="date_created" jdbcType="TIMESTAMP" property="dateCreated"/>
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy"/>
+    <result column="date_updated" jdbcType="TIMESTAMP" property="dateUpdated"/>
+    <result column="updated_by" jdbcType="VARCHAR" property="updatedBy"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, menu_no, title, caption, icon, link, `status`, refund_recv_accout, date_created,
+    created_by, date_updated, updated_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List"/>
+    from admin_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from admin_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fastpay.admin.entity.AdminMenuEntity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into admin_menu (menu_no, title, caption,
+    icon, link, `status`,
+    refund_recv_accout, date_created, created_by,
+    date_updated, updated_by)
+    values (#{menuNo,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{caption,jdbcType=VARCHAR},
+    #{icon,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+    #{refundRecvAccout,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR},
+    #{dateUpdated,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fastpay.admin.entity.AdminMenuEntity" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into admin_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuNo != null">
+        menu_no,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="caption != null">
+        caption,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="refundRecvAccout != null">
+        refund_recv_accout,
+      </if>
+      <if test="dateCreated != null">
+        date_created,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="dateUpdated != null">
+        date_updated,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menuNo != null">
+        #{menuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="caption != null">
+        #{caption,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="refundRecvAccout != null">
+        #{refundRecvAccout,jdbcType=VARCHAR},
+      </if>
+      <if test="dateCreated != null">
+        #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fastpay.admin.entity.AdminMenuEntity">
+    <!--@mbg.generated-->
+    update admin_menu
+    <set>
+      <if test="menuNo != null">
+        menu_no = #{menuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="caption != null">
+        caption = #{caption,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="refundRecvAccout != null">
+        refund_recv_accout = #{refundRecvAccout,jdbcType=VARCHAR},
+      </if>
+      <if test="dateCreated != null">
+        date_created = #{dateCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="dateUpdated != null">
+        date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fastpay.admin.entity.AdminMenuEntity">
+    <!--@mbg.generated-->
+    update admin_menu
+    set menu_no = #{menuNo,jdbcType=VARCHAR},
+    title = #{title,jdbcType=VARCHAR},
+    caption = #{caption,jdbcType=VARCHAR},
+    icon = #{icon,jdbcType=VARCHAR},
+    link = #{link,jdbcType=VARCHAR},
+    `status` = #{status,jdbcType=VARCHAR},
+    refund_recv_accout = #{refundRecvAccout,jdbcType=VARCHAR},
+    date_created = #{dateCreated,jdbcType=TIMESTAMP},
+    created_by = #{createdBy,jdbcType=VARCHAR},
+    date_updated = #{dateUpdated,jdbcType=TIMESTAMP},
+    updated_by = #{updatedBy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--auto generated by MybatisCodeHelper on 2023-04-18-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from admin_menu
+  </select>
+</mapper>
