@@ -1,7 +1,7 @@
 package com.lilipay.wechat.builder;
 
-import com.lilipay.wechat.gateway.domain.WechatTransfersGateOutput;
-import com.lilipay.wechat.gateway.message.WechatTransfersOutput;
+import com.lilipay.wechat.gate.domain.WechatTransfersGateOutput;
+import com.lilipay.wechat.gate.message.WechatTransfersOutput;
 
 public final class WechatTransfersResponseMapper {
 
