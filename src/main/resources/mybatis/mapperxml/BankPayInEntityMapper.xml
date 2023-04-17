@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lilipay.bankpay.mapper.BankPayInEntityMapper">
-  <resultMap id="BaseResultMap" type="com.lilipay.bankpay.entity.BankPayInEntity">
+<mapper namespace="com.fastpay.bankpay.mapper.BankPayInEntityMapper">
+  <resultMap id="BaseResultMap" type="com.fastpay.bankpay.entity.BankPayInEntity">
     <!--@mbg.generated-->
     <!--@Table bankpay_in-->
     <id column="id" jdbcType="BIGINT" property="id"/>
@@ -36,7 +36,7 @@
     delete from bankpay_in
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lilipay.bankpay.entity.BankPayInEntity" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fastpay.bankpay.entity.BankPayInEntity" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into bankpay_in (request_no, process_no, card_no,
     card_name, card_mobile, id_no,
@@ -49,7 +49,7 @@
     #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, #{dateUpdated,jdbcType=TIMESTAMP},
     #{updatedBy,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lilipay.bankpay.entity.BankPayInEntity" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fastpay.bankpay.entity.BankPayInEntity" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into bankpay_in
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lilipay.bankpay.entity.BankPayInEntity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fastpay.bankpay.entity.BankPayInEntity">
     <!--@mbg.generated-->
     update bankpay_in
     <set>
@@ -181,7 +181,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lilipay.bankpay.entity.BankPayInEntity">
+  <update id="updateByPrimaryKey" parameterType="com.fastpay.bankpay.entity.BankPayInEntity">
     <!--@mbg.generated-->
     update bankpay_in
     set request_no = #{requestNo,jdbcType=VARCHAR},

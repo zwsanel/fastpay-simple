@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lilipay.wechat.mapper.WechatRefundEntityMapper">
-  <resultMap id="BaseResultMap" type="com.lilipay.wechat.entity.WechatRefundEntity">
+<mapper namespace="com.fastpay.wechat.mapper.WechatRefundEntityMapper">
+  <resultMap id="BaseResultMap" type="com.fastpay.wechat.entity.WechatRefundEntity">
     <!--@mbg.generated-->
     <!--@Table wechat_refund-->
     <id column="id" jdbcType="INTEGER" property="id"/>
@@ -45,7 +45,7 @@
     delete from wechat_refund
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lilipay.wechat.entity.WechatRefundEntity" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fastpay.wechat.entity.WechatRefundEntity" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into wechat_refund (request_no, process_no, target_request_no,
     wechat_member_no, out_refund_no, refund_fee,
@@ -62,7 +62,7 @@
     #{refundRecvAccout,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR},
     #{dateUpdated,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lilipay.wechat.entity.WechatRefundEntity" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fastpay.wechat.entity.WechatRefundEntity" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into wechat_refund
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -190,7 +190,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lilipay.wechat.entity.WechatRefundEntity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fastpay.wechat.entity.WechatRefundEntity">
     <!--@mbg.generated-->
     update wechat_refund
     <set>
@@ -257,7 +257,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lilipay.wechat.entity.WechatRefundEntity">
+  <update id="updateByPrimaryKey" parameterType="com.fastpay.wechat.entity.WechatRefundEntity">
     <!--@mbg.generated-->
     update wechat_refund
     set request_no = #{requestNo,jdbcType=VARCHAR},

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lilipay.alipay.mapper.AlipayAppEntityMapper">
-  <resultMap id="BaseResultMap" type="com.lilipay.alipay.entity.AlipayAppEntity">
+<mapper namespace="com.fastpay.alipay.mapper.AlipayAppEntityMapper">
+  <resultMap id="BaseResultMap" type="com.fastpay.alipay.entity.AlipayAppEntity">
     <!--@mbg.generated-->
     <!--@Table alipay_app-->
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="request_no" jdbcType="VARCHAR" property="requestNo" />
-    <result column="process_no" jdbcType="VARCHAR" property="processNo" />
-    <result column="app_id" jdbcType="VARCHAR" property="appId" />
-    <result column="out_trade_no" jdbcType="VARCHAR" property="outTradeNo" />
-    <result column="subject" jdbcType="VARCHAR" property="subject" />
-    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount" />
-    <result column="timeout_express" jdbcType="VARCHAR" property="timeoutExpress" />
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="request_no" jdbcType="VARCHAR" property="requestNo"/>
+    <result column="process_no" jdbcType="VARCHAR" property="processNo"/>
+    <result column="app_id" jdbcType="VARCHAR" property="appId"/>
+    <result column="out_trade_no" jdbcType="VARCHAR" property="outTradeNo"/>
+    <result column="subject" jdbcType="VARCHAR" property="subject"/>
+    <result column="total_amount" jdbcType="DECIMAL" property="totalAmount"/>
+    <result column="timeout_express" jdbcType="VARCHAR" property="timeoutExpress"/>
     <result column="time_expire" jdbcType="VARCHAR" property="timeExpire" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="trade_no" jdbcType="VARCHAR" property="tradeNo" />
@@ -42,24 +42,24 @@
     delete from alipay_app
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lilipay.alipay.entity.AlipayAppEntity" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.fastpay.alipay.entity.AlipayAppEntity" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into alipay_app (request_no, process_no, app_id, 
-      out_trade_no, subject, total_amount, 
-      timeout_express, time_expire, `status`, 
-      trade_no, buyer_logon_id, trade_status, 
-      buyer_user_id, date_created, created_by, 
-      date_updated, updated_by, body
-      )
-    values (#{requestNo,jdbcType=VARCHAR}, #{processNo,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, 
-      #{outTradeNo,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
+    insert into alipay_app (request_no, process_no, app_id,
+    out_trade_no, subject, total_amount,
+    timeout_express, time_expire, `status`,
+    trade_no, buyer_logon_id, trade_status,
+    buyer_user_id, date_created, created_by,
+    date_updated, updated_by, body
+    )
+    values (#{requestNo,jdbcType=VARCHAR}, #{processNo,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR},
+    #{outTradeNo,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL},
       #{timeoutExpress,jdbcType=VARCHAR}, #{timeExpire,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
       #{tradeNo,jdbcType=VARCHAR}, #{buyerLogonId,jdbcType=VARCHAR}, #{tradeStatus,jdbcType=VARCHAR}, 
       #{buyerUserId,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
       #{dateUpdated,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{body,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lilipay.alipay.entity.AlipayAppEntity" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.fastpay.alipay.entity.AlipayAppEntity" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into alipay_app
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -175,7 +175,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lilipay.alipay.entity.AlipayAppEntity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fastpay.alipay.entity.AlipayAppEntity">
     <!--@mbg.generated-->
     update alipay_app
     <set>
@@ -236,17 +236,17 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lilipay.alipay.entity.AlipayAppEntity">
+  <update id="updateByPrimaryKey" parameterType="com.fastpay.alipay.entity.AlipayAppEntity">
     <!--@mbg.generated-->
     update alipay_app
     set request_no = #{requestNo,jdbcType=VARCHAR},
-      process_no = #{processNo,jdbcType=VARCHAR},
-      app_id = #{appId,jdbcType=VARCHAR},
-      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
-      subject = #{subject,jdbcType=VARCHAR},
-      total_amount = #{totalAmount,jdbcType=DECIMAL},
-      timeout_express = #{timeoutExpress,jdbcType=VARCHAR},
-      time_expire = #{timeExpire,jdbcType=VARCHAR},
+    process_no = #{processNo,jdbcType=VARCHAR},
+    app_id = #{appId,jdbcType=VARCHAR},
+    out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+    subject = #{subject,jdbcType=VARCHAR},
+    total_amount = #{totalAmount,jdbcType=DECIMAL},
+    timeout_express = #{timeoutExpress,jdbcType=VARCHAR},
+    time_expire = #{timeExpire,jdbcType=VARCHAR},
       `status` = #{status,jdbcType=VARCHAR},
       trade_no = #{tradeNo,jdbcType=VARCHAR},
       buyer_logon_id = #{buyerLogonId,jdbcType=VARCHAR},

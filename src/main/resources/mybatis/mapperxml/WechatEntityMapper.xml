@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lilipay.wechat.mapper.WechatEntityMapper">
-  <resultMap id="BaseResultMap" type="com.lilipay.wechat.entity.WechatEntity">
+<mapper namespace="com.fastpay.wechat.mapper.WechatEntityMapper">
+  <resultMap id="BaseResultMap" type="com.fastpay.wechat.entity.WechatEntity">
     <!--@mbg.generated-->
     <!--@Table wechat-->
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="request_no" jdbcType="VARCHAR" property="requestNo" />
-    <result column="process_no" jdbcType="VARCHAR" property="processNo" />
-    <result column="wechat_member_no" jdbcType="VARCHAR" property="wechatMemberNo" />
-    <result column="app_id" jdbcType="VARCHAR" property="appId" />
-    <result column="trade_type" jdbcType="VARCHAR" property="tradeType" />
-    <result column="notice_queue" jdbcType="VARCHAR" property="noticeQueue" />
-    <result column="ext_text1" jdbcType="VARCHAR" property="extText1" />
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="request_no" jdbcType="VARCHAR" property="requestNo"/>
+    <result column="process_no" jdbcType="VARCHAR" property="processNo"/>
+    <result column="wechat_member_no" jdbcType="VARCHAR" property="wechatMemberNo"/>
+    <result column="app_id" jdbcType="VARCHAR" property="appId"/>
+    <result column="trade_type" jdbcType="VARCHAR" property="tradeType"/>
+    <result column="notice_queue" jdbcType="VARCHAR" property="noticeQueue"/>
+    <result column="ext_text1" jdbcType="VARCHAR" property="extText1"/>
     <result column="product_id" jdbcType="VARCHAR" property="productId" />
     <result column="code_url" jdbcType="VARCHAR" property="codeUrl" />
     <result column="mweb_url" jdbcType="VARCHAR" property="mwebUrl" />
@@ -63,17 +63,17 @@
     delete from wechat
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lilipay.wechat.entity.WechatEntity">
+  <insert id="insert" parameterType="com.fastpay.wechat.entity.WechatEntity">
     <!--@mbg.generated-->
-    insert into wechat (id, request_no, process_no, 
-      wechat_member_no, app_id, trade_type, 
-      notice_queue, ext_text1, product_id, 
-      code_url, mweb_url, scene_info, 
-      request_ip, prepay_id, order_no, 
-      transaction_id, amount, remark, 
-      submit_time, expire_time, pay_time, 
-      return_time, return_code, return_msg, 
-      result_code, err_code, err_code_des, 
+    insert into wechat (id, request_no, process_no,
+    wechat_member_no, app_id, trade_type,
+    notice_queue, ext_text1, product_id,
+    code_url, mweb_url, scene_info,
+    request_ip, prepay_id, order_no,
+    transaction_id, amount, remark,
+    submit_time, expire_time, pay_time,
+    return_time, return_code, return_msg,
+    result_code, err_code, err_code_des,
       open_id, bank_type, trade_state, 
       trade_state_desc, `status`, trade_limit, 
       trade_desc, date_created, created_by, 
@@ -92,7 +92,7 @@
       #{tradeDesc,jdbcType=VARCHAR}, #{dateCreated,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
       #{dateUpdated,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lilipay.wechat.entity.WechatEntity">
+  <insert id="insertSelective" parameterType="com.fastpay.wechat.entity.WechatEntity">
     <!--@mbg.generated-->
     insert into wechat
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -328,7 +328,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lilipay.wechat.entity.WechatEntity">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fastpay.wechat.entity.WechatEntity">
     <!--@mbg.generated-->
     update wechat
     <set>
@@ -446,17 +446,17 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lilipay.wechat.entity.WechatEntity">
+  <update id="updateByPrimaryKey" parameterType="com.fastpay.wechat.entity.WechatEntity">
     <!--@mbg.generated-->
     update wechat
     set request_no = #{requestNo,jdbcType=VARCHAR},
-      process_no = #{processNo,jdbcType=VARCHAR},
-      wechat_member_no = #{wechatMemberNo,jdbcType=VARCHAR},
-      app_id = #{appId,jdbcType=VARCHAR},
-      trade_type = #{tradeType,jdbcType=VARCHAR},
-      notice_queue = #{noticeQueue,jdbcType=VARCHAR},
-      ext_text1 = #{extText1,jdbcType=VARCHAR},
-      product_id = #{productId,jdbcType=VARCHAR},
+    process_no = #{processNo,jdbcType=VARCHAR},
+    wechat_member_no = #{wechatMemberNo,jdbcType=VARCHAR},
+    app_id = #{appId,jdbcType=VARCHAR},
+    trade_type = #{tradeType,jdbcType=VARCHAR},
+    notice_queue = #{noticeQueue,jdbcType=VARCHAR},
+    ext_text1 = #{extText1,jdbcType=VARCHAR},
+    product_id = #{productId,jdbcType=VARCHAR},
       code_url = #{codeUrl,jdbcType=VARCHAR},
       mweb_url = #{mwebUrl,jdbcType=VARCHAR},
       scene_info = #{sceneInfo,jdbcType=VARCHAR},
