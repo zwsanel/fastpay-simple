@@ -29,8 +29,8 @@
 
 ## 项目要求
 
-开发语言：jAVA
-技术栈：SpringBoot、Redis、RocketMQ、Mysql
+开发语言：JAVA
+技术栈：SpringBoot、Redis、RocketMQ、MySQL
 
 数据库最低版本要求：5.7
 JDK最低版本要求：1.8
